@@ -159,15 +159,26 @@ public class Frm_cliente extends JPanel {
 			lblestado.setFont(new Font("Sans Serif", Font.BOLD, 17));
 			this.add(lblestado);
 			
+			String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig" };
+			String[] estados = { " ","  São Paulo", "  Rio de Janeiro", "  Minas Gerais" }; 
 			//textbox estado
-			
-			
-			
+			JComboBox comboestado = new JComboBox(estados);
+			comboestado.setBounds(570, 370, 150, 23);
+			this.add(comboestado);
+		
 			
 
 			//btn cadastrar
 			JButton btncadastrar = new JButton("Cadastrar Dados");
 			btncadastrar.setBounds(30, 600, 200, 30);
+			btncadastrar.addActionListener( new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+				}
+			});
 			this.add(btncadastrar);
 			
 			
