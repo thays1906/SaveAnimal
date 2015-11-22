@@ -1,6 +1,8 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.ParseException;
 
 import javax.swing.JButton;
@@ -160,7 +162,8 @@ public class Frm_cliente extends JPanel {
 			this.add(lblestado);
 			
 			String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig" };
-			String[] estados = { " ","  São Paulo", "  Rio de Janeiro", "  Minas Gerais" }; 
+			String[] estados = { " ","Acre","Alagoas","Amapá","Amazonas","Bahia","Ceará","Distrito Federal","Espírito Santo","Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul","Minas Gerais","Pará","Paraíba","Paraná","Pernambuco","Piauí","Rio de Janeiro","Rio Grande do Norte","Rio Grande do Sul","Rondônia","Roraima","Santa Catarina","São Paulo","Sergipe","Tocantins"
+ }; 
 			//textbox estado
 			JComboBox comboestado = new JComboBox(estados);
 			comboestado.setBounds(570, 370, 150, 23);
@@ -187,7 +190,7 @@ public class Frm_cliente extends JPanel {
 			btnlimpar.setBounds(290, 600, 200, 30);
 			this.add(btnlimpar);
 			btnlimpar.addActionListener(new ActionListener() {
-				
+		
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					txtnome.setText("");
@@ -205,13 +208,6 @@ public class Frm_cliente extends JPanel {
 			btnvoltar.setBounds(550, 600, 200, 30);
 			this.add(btnvoltar);
 			
-			}
-			catch (ParseException e) {
-				
-				e.printStackTrace();
-			}
-			
-		
 			}
 		
 		public  void montarTela (String[] args) {       
