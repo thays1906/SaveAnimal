@@ -2,6 +2,9 @@ import java.awt.Color;
 import java.awt.MenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -12,6 +15,14 @@ import javax.swing.JOptionPane;
 public class Inicio {
 
 	public static void main(String[] args) {
+		
+		ConexaoBanco xx = new ConexaoBanco();
+		Map<String, String> parameters = new HashMap<String, String>();
+		
+		parameters.put("jose", "String");
+		parameters.put("1", "Int");
+		xx.ExecuteNowQuery("SELECT  * FROM tSoltc where rCli like  '%?%'  and cSgmto = ? ", parameters);
+		
 		JFrame form= new JFrame("Save Animal");
 		JMenuBar bar= new JMenuBar();
 		
