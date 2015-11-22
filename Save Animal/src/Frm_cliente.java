@@ -17,6 +17,15 @@ import javax.swing.text.MaskFormatter;
 
 public class Frm_cliente extends JPanel {
 
+	JFrame frame = new JFrame ("Save Animal");
+	JFormattedTextField txtcpf;
+	JFormattedTextField txtdata;
+	JFormattedTextField txtfone;
+	JTextField txtemail;
+	JTextField txtnome;
+	JTextField txtendereco;
+	JTextField txtnumero;
+	
 		public Frm_cliente(){
 			
 	try {
@@ -35,7 +44,7 @@ public class Frm_cliente extends JPanel {
 			this.add(lblnome);
 			
 			//textbox cliente
-			JTextField txtnome = new JTextField();
+			txtnome= new JTextField();
 			txtnome.setBounds(150, 130, 300, 23);
 			txtnome.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtnome);
@@ -48,7 +57,7 @@ public class Frm_cliente extends JPanel {
 			
 			//textbox cpf
 			MaskFormatter MascaraCpf = new MaskFormatter(" ###.###.###-##");
-			JFormattedTextField txtcpf = new JFormattedTextField(MascaraCpf);
+			txtcpf= new JFormattedTextField(MascaraCpf);
 			txtcpf.setBounds(150, 160, 200, 23);
 			txtcpf.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtcpf);
@@ -62,7 +71,7 @@ public class Frm_cliente extends JPanel {
 			//textbox data de nasc.
 			MaskFormatter MascaraData = new MaskFormatter("##/##/####");
 			MascaraData.setPlaceholderCharacter('_');
-			JFormattedTextField txtdata = new JFormattedTextField(MascaraData);
+			txtdata = new JFormattedTextField(MascaraData);
 			txtdata.setBounds(150, 190, 88, 25);
 			txtdata.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtdata);
@@ -76,7 +85,7 @@ public class Frm_cliente extends JPanel {
 			//textbox fone
 			MaskFormatter MascaraFone  = new MaskFormatter(" (##) #####-####");
 			MascaraFone.setPlaceholderCharacter('_');
-			JFormattedTextField txtfone = new JFormattedTextField(MascaraFone);
+			txtfone = new JFormattedTextField(MascaraFone);
 			txtfone.setBounds(150, 220, 150, 25);
 			txtfone.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtfone);
@@ -88,7 +97,7 @@ public class Frm_cliente extends JPanel {
 			this.add(lblemail);
 			
 			//textbox email
-			JTextField txtemail = new JTextField();
+			txtemail= new JTextField();
 			txtemail.setBounds(150, 250, 200, 23);
 			txtemail.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtemail);
@@ -100,7 +109,7 @@ public class Frm_cliente extends JPanel {
 			this.add(lblendereco);
 			
 			//textbox endereço
-			JTextField txtendereco = new JTextField();
+			txtendereco = new JTextField();
 			txtendereco.setBounds(150, 280, 200, 23);
 			txtendereco.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtendereco);
@@ -112,7 +121,7 @@ public class Frm_cliente extends JPanel {
 			this.add(lblnumero);
 			
 			//textbox numero
-			JTextField txtnumero = new JTextField();
+			txtnumero = new JTextField();
 			txtnumero.setBounds(520, 280, 42, 24);
 			txtnumero.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtnumero);
@@ -162,8 +171,7 @@ public class Frm_cliente extends JPanel {
 			this.add(lblestado);
 			
 			String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig" };
-			String[] estados = { " ","Acre","Alagoas","Amapá","Amazonas","Bahia","Ceará","Distrito Federal","Espírito Santo","Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul","Minas Gerais","Pará","Paraíba","Paraná","Pernambuco","Piauí","Rio de Janeiro","Rio Grande do Norte","Rio Grande do Sul","Rondônia","Roraima","Santa Catarina","São Paulo","Sergipe","Tocantins"
- }; 
+			String[] estados = { " ","Acre","Alagoas","Amapá","Amazonas","Bahia","Ceará","Distrito Federal","Espírito Santo","Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul","Minas Gerais","Pará","Paraíba","Paraná","Pernambuco","Piauí","Rio de Janeiro","Rio Grande do Norte","Rio Grande do Sul","Rondônia","Roraima","Santa Catarina","São Paulo","Sergipe","Tocantins"}; 
 			//textbox estado
 			JComboBox comboestado = new JComboBox(estados);
 			comboestado.setBounds(570, 370, 150, 23);
@@ -178,7 +186,7 @@ public class Frm_cliente extends JPanel {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
+					LimparCampos();
 					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
 				}
 			});
@@ -193,13 +201,7 @@ public class Frm_cliente extends JPanel {
 		
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					txtnome.setText("");
-					txtdata.setText("");
-					txtfone.setText("");
-					txtemail.setText("");
-					txtendereco.setText("");
-					txtcpf.setText("");
-					txtnumero.setText("");
+					LimparCampos();
 				}
 			});
 			
@@ -208,11 +210,34 @@ public class Frm_cliente extends JPanel {
 			btnvoltar.setBounds(550, 600, 200, 30);
 			this.add(btnvoltar);
 			
+			btnvoltar.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					frame.setVisible(false);
+					
+				}
+			});
+			
 			}
+	catch(Exception e)
+	{
 		
+	}
+}
+		public void LimparCampos()
+		{
+			txtnome.setText("");
+			txtdata.setText("");
+			txtfone.setText("");
+			txtemail.setText("");
+			txtendereco.setText("");
+			txtcpf.setText("");
+			txtnumero.setText("");
+		}
 		public  void montarTela (String[] args) {       
-	        JFrame frame = new JFrame ("Save Animal");  
-	        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+	          
+	        frame.setDefaultCloseOperation (JFrame.HIDE_ON_CLOSE);
 	        frame.setSize(800,800);
 	        frame.getContentPane().add (this);  
 	        //frame.pack(); diminui a tela   

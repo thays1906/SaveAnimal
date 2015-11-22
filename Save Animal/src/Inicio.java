@@ -14,18 +14,19 @@ import javax.swing.JOptionPane;
 
 public class Inicio {
 
+
 	public static void main(String[] args) {
 		
-		ConexaoBanco xx = new ConexaoBanco();
-		Map<String, String> parameters = new HashMap<String, String>();
+		//ConexaoBanco xx = new ConexaoBanco();
+		//Map<String, String> parameters = new HashMap<String, String>();
 		
-		parameters.put("jose", "String");
-		parameters.put("1", "Int");
-		xx.ExecuteNowQuery("SELECT  * FROM tSoltc where rCli like  '%?%'  and cSgmto = ? ", parameters);
+		//parameters.put("jose", "String");
+		//parameters.put("1", "Int");
+		//xx.ExecuteNowQuery("SELECT  * FROM tSoltc where rCli like  '%?%'  and cSgmto = ? ", parameters);
 		
 		JFrame form= new JFrame("Save Animal");
-		JMenuBar bar= new JMenuBar();
 		
+		JMenuBar bar= new JMenuBar();
 		JMenu menu1= new JMenu("         Cadastro       ");
 	
 		JMenuItem submenu_cliente = new JMenuItem("       Cliente      ");
@@ -56,7 +57,7 @@ public class Inicio {
 		form.setJMenuBar(bar);
 		form.setSize(800, 800);
 		form.setVisible(true);
-		
+		form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }
