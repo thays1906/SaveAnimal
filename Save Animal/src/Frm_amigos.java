@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 
-public class Frm_cliente extends JPanel {
+public class Frm_amigos extends JPanel {
 
 
 	/**
@@ -32,13 +32,13 @@ public class Frm_cliente extends JPanel {
 	JTextField txtcidade;
 	JTextField txtestado;
 	
-		public Frm_cliente(){
+		public Frm_amigos(){
 			
 	try {
 				
 			
 			this.setLayout(null);
-			JLabel lbltitulo = new JLabel("Cadastro de Cliente",JLabel.CENTER);
+			JLabel lbltitulo = new JLabel("Cadastro de Amigos",JLabel.CENTER);
 			lbltitulo.setBounds(200, 20, 400, 40);
 			lbltitulo.setFont(new Font("Serif", Font.BOLD, 24));
 			this.add(lbltitulo);

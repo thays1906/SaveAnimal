@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -14,6 +13,8 @@ import javax.swing.JOptionPane;
 
 public class Inicio {
 
+
+	private static JMenuItem submenu_amigos;
 
 	public static void main(String[] args) {
 		
@@ -43,15 +44,33 @@ public class Inicio {
 			}
 		});
 		
-		
 		menu1.add(submenu_cliente);
-		menu1.add(new JMenuItem("       Animais       "));
+		
+		JMenuItem menu_amigos = new JMenuItem(  "Amigos  ");
+		menu_amigos.setSize(100, 30);
+	    menu_amigos.setBackground(Color.CYAN);
+	    menu_amigos.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Frm_amigos frma = new Frm_amigos();
+				frma.montarTela(null);
+				
+			}
+		});
+		
+	    
+	    menu1.add(menu_amigos);
+		
 		bar.add(menu1);
+	
+		
+		
 		
 		JMenu menu2 = new JMenu("       Doação        ");
 		bar.add(menu2);
 		
-		JMenu menu3 = new JMenu("       Adoção        ");
+		JMenu menu3 = new JMenu("       Adoção        ");																																																			
 		bar.add(menu3);
 		
 		form.setJMenuBar(bar);
