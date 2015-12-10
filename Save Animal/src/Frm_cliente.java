@@ -188,6 +188,7 @@ public class Frm_cliente extends JPanel {
 			//btn cadastrar
 			JButton btncadastrar = new JButton("Cadastrar Dados");
 			btncadastrar.setBounds(30, 600, 200, 30);
+			btncadastrar.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
 			btncadastrar.addActionListener( new ActionListener() {
 				
 				@Override
@@ -202,6 +203,7 @@ public class Frm_cliente extends JPanel {
 				//btn limpar
 			JButton btnlimpar = new JButton("Limpar");
 			btnlimpar.setBounds(290, 600, 200, 30);
+			btnlimpar.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
 			this.add(btnlimpar);
 			btnlimpar.addActionListener(new ActionListener() {
 		
@@ -213,6 +215,7 @@ public class Frm_cliente extends JPanel {
 			
 			//btn voltar
 			JButton btnvoltar = new JButton("Voltar");
+			btnvoltar.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
 			btnvoltar.setBounds(550, 600, 200, 30);
 			this.add(btnvoltar);
 			

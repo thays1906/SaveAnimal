@@ -11,10 +11,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.text.AttributeSet.ColorAttribute;
+import javax.swing.JColorChooser;
 
 public class Inicio {
 
-
+	static Color azul = new Color(221, 183, 248);
 	private static JMenuItem submenu_amigos;
 
 	public static void main(String[] args) {
@@ -28,14 +30,18 @@ public class Inicio {
 		
 		JFrame form= new JFrame("Save Animal");
 		
+		
 		JMenuBar bar= new JMenuBar();
+		bar.setBackground(azul);
+		
 		JMenu menu1= new JMenu("                 Cadastro              ");
-	
+		menu1.setBackground(azul);
+		menu1.setForeground(Color.WHITE);
+		menu1.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
 		JMenuItem submenu_cliente = new JMenuItem("            Cliente         ");
-		submenu_cliente.setForeground(Color.white);
+		submenu_cliente.setForeground(Color.WHITE);
 	    submenu_cliente.setFont(new Font("" ,Font.BOLD , 14));
-	    submenu_cliente.setBackground(Color.blue);
-	   // submenu_cliente.setRolloverSelectedIcon(Color.black);
+	    submenu_cliente.setBackground(azul);
 		submenu_cliente.addActionListener(new ActionListener() {
 			
 			@Override
@@ -52,7 +58,7 @@ public class Inicio {
 		JMenuItem menu_amigos = new JMenuItem("            Amigos         ");
 	    menu_amigos.setForeground(Color.WHITE);
 	    menu_amigos.setFont(new Font("" ,Font.BOLD , 14));
-	    menu_amigos.setBackground(Color.blue);
+	    menu_amigos.setBackground(azul);
 	    menu_amigos.addActionListener(new ActionListener() {
 			
 			@Override
@@ -72,9 +78,13 @@ public class Inicio {
 		
 		
 		JMenu menu2 = new JMenu("       Doação        ");
+		menu2.setFont(new Font("Helvetica", Font.BOLD, 16));
+		menu2.setForeground(Color.WHITE);
 		bar.add(menu2);
 		
-		JMenu menu3 = new JMenu("       Adoção        ");																																																			
+		JMenu menu3 = new JMenu("       Adoção        ");	
+		menu3.setFont(new Font("Helvetica", Font.BOLD, 16));
+		menu3.setForeground(Color.WHITE);
 		bar.add(menu3);
 		
 		form.setJMenuBar(bar);
