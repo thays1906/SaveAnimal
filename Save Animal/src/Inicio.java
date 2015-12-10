@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.MenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,11 +29,13 @@ public class Inicio {
 		JFrame form= new JFrame("Save Animal");
 		
 		JMenuBar bar= new JMenuBar();
-		JMenu menu1= new JMenu("         Cadastro       ");
+		JMenu menu1= new JMenu("                 Cadastro              ");
 	
-		JMenuItem submenu_cliente = new JMenuItem("       Cliente      ");
-		submenu_cliente.setSize(100, 30);
-		submenu_cliente.setBackground(Color.lightGray);
+		JMenuItem submenu_cliente = new JMenuItem("            Cliente         ");
+		submenu_cliente.setForeground(Color.white);
+	    submenu_cliente.setFont(new Font("" ,Font.BOLD , 14));
+	    submenu_cliente.setBackground(Color.blue);
+	   // submenu_cliente.setRolloverSelectedIcon(Color.black);
 		submenu_cliente.addActionListener(new ActionListener() {
 			
 			@Override
@@ -46,9 +49,10 @@ public class Inicio {
 		
 		menu1.add(submenu_cliente);
 		
-		JMenuItem menu_amigos = new JMenuItem(  "Amigos  ");
-		menu_amigos.setSize(100, 30);
-	    menu_amigos.setBackground(Color.CYAN);
+		JMenuItem menu_amigos = new JMenuItem("            Amigos         ");
+	    menu_amigos.setForeground(Color.WHITE);
+	    menu_amigos.setFont(new Font("" ,Font.BOLD , 14));
+	    menu_amigos.setBackground(Color.blue);
 	    menu_amigos.addActionListener(new ActionListener() {
 			
 			@Override
@@ -77,6 +81,9 @@ public class Inicio {
 		form.setSize(800, 800);
 		form.setVisible(true);
 		form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//form.setEnabled(false);
+		Frm_login log = new Frm_login();
+				log.montarTela(null);
 	}
 
 }
