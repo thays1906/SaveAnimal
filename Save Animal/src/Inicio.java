@@ -7,11 +7,14 @@ import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.text.AttributeSet.ColorAttribute;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
 
 public class Inicio {
@@ -30,6 +33,7 @@ public class Inicio {
 		
 		JFrame form= new JFrame("Save Animal");
 		
+		form.setLayout(null);
 		
 		JMenuBar bar= new JMenuBar();
 		bar.setBackground(azul);
@@ -37,8 +41,8 @@ public class Inicio {
 		JMenu menu1= new JMenu("                 Cadastro              ");
 		menu1.setBackground(azul);
 		menu1.setForeground(Color.WHITE);
-		menu1.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
-		JMenuItem submenu_cliente = new JMenuItem("            Cliente         ");
+		menu1.setFont(new Font("Sans Serif", Font.BOLD, 16));
+		JMenuItem submenu_cliente = new JMenuItem("                  Cliente               ");
 		submenu_cliente.setForeground(Color.WHITE);
 	    submenu_cliente.setFont(new Font("" ,Font.BOLD , 14));
 	    submenu_cliente.setBackground(azul);
@@ -55,7 +59,7 @@ public class Inicio {
 		
 		menu1.add(submenu_cliente);
 		
-		JMenuItem menu_amigos = new JMenuItem("            Amigos         ");
+		JMenuItem menu_amigos = new JMenuItem("                  Amigos               ");
 	    menu_amigos.setForeground(Color.WHITE);
 	    menu_amigos.setFont(new Font("" ,Font.BOLD , 14));
 	    menu_amigos.setBackground(azul);
@@ -91,9 +95,18 @@ public class Inicio {
 		form.setSize(800, 800);
 		form.setVisible(true);
 		form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JLabel imglogo = new JLabel(new ImageIcon("images/casa.fw.png"));
+		
+		imglogo.setBounds(100, 100, 400, 400);
+		
+		form.add(imglogo);
+		
+		
 		//form.setEnabled(false);
 		Frm_login log = new Frm_login();
-				log.montarTela(null);
+		log.montarTela(null);
+		
 	}
 
 }

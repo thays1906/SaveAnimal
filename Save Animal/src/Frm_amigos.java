@@ -13,8 +13,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 import java.awt.FlowLayout;
-import  javax.swing.ButtonGroup;
+import javax.swing.ButtonGroup;
 import javax.swing.SwingUtilities;
+
 
 public class Frm_amigos extends JPanel {
 
@@ -33,6 +34,7 @@ public class Frm_amigos extends JPanel {
 	JTextField txtcep;
 	JTextField txtcomport;
 	JTextField txtraca;
+	JComboBox comboporte;
 		public Frm_amigos(){
 			
 	try {
@@ -52,7 +54,7 @@ public class Frm_amigos extends JPanel {
 			
 			//textbox nome
 			txtnome= new JTextField();
-			txtnome.setBounds(150, 130, 300, 25);
+			txtnome.setBounds(165, 130, 300, 25);
 			txtnome.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtnome);
 			
@@ -63,8 +65,8 @@ public class Frm_amigos extends JPanel {
 			this.add(lblraca);
 			
 			//textbox raça
-			JTextField txtraca = new JTextField();
-			txtraca.setBounds(150, 160, 200, 25);
+			txtraca = new JTextField();
+			txtraca.setBounds(165, 160, 200, 25);
 			txtraca.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtraca);
 			
@@ -75,8 +77,8 @@ public class Frm_amigos extends JPanel {
 			this.add(lblidade);
 			
 			//textbox idade
-			JTextField txtidade = new JTextField();
-			txtidade.setBounds(150, 190, 88, 25);
+			txtidade = new JTextField();
+			txtidade.setBounds(165, 190, 88, 25);
 			txtidade.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtidade);
 			
@@ -87,8 +89,8 @@ public class Frm_amigos extends JPanel {
 			this.add(lblfone);
 
 			//textbox cor
-			JTextField txtcor = new JTextField();
-			txtcor.setBounds(150, 220, 150, 25);
+			txtcor = new JTextField();
+			txtcor.setBounds(165, 220, 150, 25);
 			txtcor.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtcor);
 			
@@ -99,10 +101,11 @@ public class Frm_amigos extends JPanel {
 			this.add(lblporte);
 			
 			//textbox porte
-			txtporte= new JTextField();
-			txtporte.setBounds(150, 250, 200, 25);
-			txtporte.setFont(new Font("Sans Serif", Font.PLAIN, 17));
-			this.add(txtporte);
+			String []  tamanhos = {"Selecione...","Grande" , "Médio", "Pequeno "};
+			comboporte = new JComboBox(tamanhos);
+			comboporte.setBounds(165, 250, 200, 25);
+			this.add(comboporte);
+			
 			
 			//labelpeso
 			JLabel lblpeso = new JLabel("Peso:",JLabel.LEFT);
@@ -112,25 +115,30 @@ public class Frm_amigos extends JPanel {
 			
 			//textbox peso
 			txtpeso = new JTextField();
-			txtpeso.setBounds(150, 280, 200, 25);
+			txtpeso.setBounds(165, 280, 200, 25);
 			txtpeso.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtpeso);
 			
 			//label castrado
 			JLabel lblcastrado = new JLabel("Castrado:",JLabel.LEFT);
-			lblcastrado.setBounds(20, 400, 100, 20);
+			lblcastrado.setBounds(20, 380, 100, 20);
 			lblcastrado.setFont(new Font("Sans Serif", Font.BOLD, 17));
 			this.add(lblcastrado);
 			
 			JRadioButton sim = new JRadioButton();
 			JRadioButton nao = new JRadioButton();
 		
-			sim.setBounds(110, 400, 50, 24);
+			sim.setBounds(165, 380, 100, 25);
 			sim.setText("Sim");
-			sim.setFont( new Font("", Font.BOLD, 14));
+			sim.setFont( new Font("Sans Serif", Font.BOLD, 15));
 			nao.setText("Não");
-			nao.setFont( new Font("", Font.BOLD, 14));
-			nao.setBounds(160, 400, 100, 24);
+			nao.setFont( new Font("Sans Serif", Font.BOLD, 15));
+			nao.setBounds(267, 380, 100, 25);
+			
+			ButtonGroup grpcastrado = new ButtonGroup();
+			grpcastrado.add(sim);
+			grpcastrado.add(nao);
+			
 			this.add(sim);
 			this.add(nao);
 			
@@ -143,12 +151,17 @@ public class Frm_amigos extends JPanel {
 			JRadioButton macho = new JRadioButton();
 			JRadioButton femea = new JRadioButton();
 			
-			macho.setBounds(100, 350, 100, 23);
-			macho.setFont( new Font("", Font.BOLD, 14));
+			macho.setBounds(165, 350, 100, 25);
+			macho.setFont( new Font("Sans Serif", Font.BOLD, 14));
 			macho.setText("Macho");
 			femea.setText("Femêa");
-			femea.setFont( new Font("", Font.BOLD, 14));
-			femea.setBounds(200, 350, 200, 23);
+			femea.setFont( new Font("Sans Serif", Font.BOLD, 14));
+			femea.setBounds(265, 350, 100, 25);
+			
+			ButtonGroup grpsexo = new ButtonGroup();
+			grpsexo.add(macho);
+			grpsexo.add(femea);
+			
 			this.add(macho);
 			this.add(femea);
 			
@@ -159,23 +172,16 @@ public class Frm_amigos extends JPanel {
 			this.add(lblcomport);
 			
 			//textbox comportamento
-			JTextField txtcomport = new JTextField();
-			txtcomport.setBounds(165, 310, 185, 25);
+			txtcomport = new JTextField();
+			txtcomport.setBounds(165, 310, 200, 25);
 			txtcomport.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtcomport);
-			
-			
-			
-			
-			
-			
-			
-		
 			
 
 			//btn cadastrar
 			JButton btncadastrar = new JButton("Cadastrar Dados");
 			btncadastrar.setBounds(30, 600, 200, 30);
+			btncadastrar.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
 			btncadastrar.addActionListener( new ActionListener() {
 				
 				@Override
@@ -190,6 +196,7 @@ public class Frm_amigos extends JPanel {
 				//btn limpar
 			JButton btnlimpar = new JButton("Limpar");
 			btnlimpar.setBounds(290, 600, 200, 30);
+			btnlimpar.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
 			this.add(btnlimpar);
 			btnlimpar.addActionListener(new ActionListener() {
 		
@@ -202,6 +209,7 @@ public class Frm_amigos extends JPanel {
 			//btn voltar
 			JButton btnvoltar = new JButton("Voltar");
 			btnvoltar.setBounds(550, 600, 200, 30);
+			btnvoltar.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
 			this.add(btnvoltar);
 			
 			btnvoltar.addActionListener(new ActionListener() {
@@ -225,11 +233,12 @@ public class Frm_amigos extends JPanel {
 			txtidade.setText("");
 			txtcor.setText("");
 			txtpeso.setText("");
-			txtporte.setText("");
+			//txtporte.setText("");
 			txtraca.setText("");
 			txtnumero.setText("");
 			txtcep.setText("");
 			txtcomport.setText("");
+			
 			
 		}
 	
