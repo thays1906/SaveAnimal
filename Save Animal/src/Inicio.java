@@ -43,6 +43,9 @@ public class Inicio {
 		menu1.setForeground(Color.WHITE);
 		menu1.setFont(new Font("Sans Serif", Font.BOLD, 16));
 		JMenuItem submenu_cliente = new JMenuItem("                  Cliente               ");
+		
+		submenu_cliente.setIcon(new ImageIcon("images/casa.fw.png"));
+		
 		submenu_cliente.setForeground(Color.WHITE);
 	    submenu_cliente.setFont(new Font("" ,Font.BOLD , 14));
 	    submenu_cliente.setBackground(azul);
