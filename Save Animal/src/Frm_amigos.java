@@ -23,7 +23,7 @@ public class Frm_amigos extends JPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2427775509692175315L;
+	//private static final long serialVersionUID = 2427775509692175315L;
 	JFrame frame = new JFrame ("Save Animal");
 	JTextField txtcor;
 	JTextField txtidade;

@@ -1,8 +1,14 @@
 import java.awt.Color;
+import java.awt.ComponentOrientation;
 import java.awt.Font;
 import java.awt.MenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,15 +49,25 @@ public class Inicio {
 		menu1.setBackground(azul);
 		menu1.setForeground(Color.WHITE);
 		menu1.setFont(new Font("Sans Serif", Font.BOLD, 16));
-		JMenuItem submenu_cliente = new JMenuItem("   Cliente               ");
+		JMenuItem submenu_cliente = new JMenuItem("   Cliente              ");
 		
 		ImageIcon imgcliente= new ImageIcon("images/Login Manager.png");
 		
-		
 		submenu_cliente.setIcon(imgcliente);
 		submenu_cliente.setForeground(Color.WHITE);
-	    submenu_cliente.setFont(new Font("" ,Font.BOLD , 14));
+	    submenu_cliente.setFont(new Font("" ,Font.BOLD , 17));
 	    submenu_cliente.setBackground(azul);
+	    submenu_cliente.addMouseWheelListener(new MouseWheelListener() {
+			
+			@Override
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				// TODO Auto-generated method stub
+				submenu_cliente.setBackground(Color.BLACK);
+			}
+		});
+			
+			
+		
 		submenu_cliente.addActionListener(new ActionListener() {
 			
 			@Override
@@ -65,9 +81,9 @@ public class Inicio {
 		
 		menu1.add(submenu_cliente);
 		
-		JMenuItem menu_amigos = new JMenuItem("                  Amigos               ");
+		JMenuItem menu_amigos = new JMenuItem("   Amigos  ");
 	    menu_amigos.setForeground(Color.WHITE);
-	    menu_amigos.setFont(new Font("" ,Font.BOLD , 14));
+	    menu_amigos.setFont(new Font("" ,Font.BOLD , 17));
 	    menu_amigos.setBackground(azul);
 	    menu_amigos.addActionListener(new ActionListener() {
 			
@@ -87,10 +103,7 @@ public class Inicio {
 		
 		
 		
-		JMenu menu2 = new JMenu("       Doação        ");
-		menu2.setFont(new Font("Helvetica", Font.BOLD, 16));
-		menu2.setForeground(Color.WHITE);
-		bar.add(menu2);
+	
 		
 		JMenu menu3 = new JMenu("       Adoção        ");	
 		menu3.setFont(new Font("Helvetica", Font.BOLD, 16));

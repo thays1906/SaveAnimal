@@ -18,7 +18,7 @@ public class Frm_cliente extends JPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2427775509692175315L;
+	//private static final long serialVersionUID = 2427775509692175315L;
 	JFrame frame = new JFrame ("Save Animal");
 	JFormattedTextField txtcpf;
 	JFormattedTextField txtdata;
