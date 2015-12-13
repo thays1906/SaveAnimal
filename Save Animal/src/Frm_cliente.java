@@ -1,6 +1,10 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -242,21 +246,38 @@ public class Frm_cliente extends JPanel {
 			//String query = "INSERT INTO Cliente(NomeCliente,Cpf,DataNasc,Telefone,Email,Endereco,Num,CEP,Bairro,Cidade,Estado)" +
 					          //"VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 			
-			String query = "INSERT INTO Cliente(NomeCliente,Cpf)VALUES(?,?)";
+			String query = "INSERT INTO Cliente(NomeCliente,Cpf,DataNasc,Telefone,Email,Endereco,Num,CEP,Bairro,Cidade,Estado)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 			
 			ArrayList<Object> objetos = new ArrayList<>();
 			
 			objetos.add(txtnome.getText());
 			objetos.add(txtcpf.getText());
-			//objetos.add(txtdata.getText());
-			//objetos.add(txtfone.getText());
-			//objetos.add(txtemail.getText());
-			//objetos.add(txtendereco.getText());
-			//objetos.add(txtnumero.getText());
-			//objetos.add(txtcep.getValue());
-			//objetos.add(txtbairro.getText());
-			//objetos.add(txtcidade.getText());
-			//objetos.add(comboestado.getSelectedItem());
+			
+			SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
+			String data = "";
+			 data = txtdata.getValue().toString();
+			java.util.Date invoiceDate = null;
+			try {
+				invoiceDate = formatDate.parse(data);
+				String test = formatDate.format(invoiceDate);
+				invoiceDate = formatDate.parse(test);
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			java.sql.Date sqlDate = new Date(invoiceDate. getTime());
+			
+			objetos.add(sqlDate);
+			objetos.add(txtfone.getText());
+			objetos.add(txtemail.getText());
+			objetos.add(txtendereco.getText());
+			objetos.add(txtnumero.getText());
+			objetos.add(txtcep.getValue());
+			objetos.add(txtbairro.getText());
+			objetos.add(txtcidade.getText());
+			objetos.add(comboestado.getSelectedItem());
 			
 			ConexaoBanco banco = new ConexaoBanco();
 			banco.ExecuteNowQuery(query, objetos);
