@@ -17,6 +17,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.BevelBorder;
@@ -43,6 +44,9 @@ public class Inicio {
 		
 		form.setLayout(null);
 		form.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		JLabel lblBack = new JLabel(new ImageIcon("images/imgback.fw.png"));
+		lblBack.setBounds(50, 50, 100, 100);
+		form.add(lblBack);
 		JMenuBar bar= new JMenuBar();
 		bar.setBackground(azul);
 		bar.setBorder(new BevelBorder(BevelBorder.LOWERED));
