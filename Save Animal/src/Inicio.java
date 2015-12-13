@@ -17,7 +17,7 @@ public class Inicio {
 	private static JMenuItem submenu_amigos;
 
 	public static void main(String[] args) {
-		
+		//KKK
 		//ConexaoBanco xx = new ConexaoBanco();
 		//Map<String, String> parameters = new HashMap<String, String>();
 		
