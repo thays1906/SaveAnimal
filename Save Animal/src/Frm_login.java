@@ -26,8 +26,8 @@ public class Frm_login extends JPanel {
 	
 	
 	JFrame frame = new JFrame("Save Animal");
-
-	ImageIcon imglogin = new ImageIcon("images/usuario.png");
+	ImageIcon imgicon = new ImageIcon("images/casa.fw.png");
+	ImageIcon imglogin = new ImageIcon("images/usuarionovo.fw.png");
 	
 	JTextField txtusuario;
 	JTextField txtsenha;
@@ -39,11 +39,11 @@ public class Frm_login extends JPanel {
 			
 			this.setLayout(null);
 			
-			
+			frame.setIconImage(imgicon.getImage());
 			Image img1 = imglogin.getImage();
-			Image newimg = img1.getScaledInstance(80, 100, java.awt.Image.SCALE_SMOOTH);
+			Image newimg = img1.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 			JLabel lblimg = new JLabel(new ImageIcon(newimg));
-			lblimg.setBounds(170, 60, 80, 100);
+			lblimg.setBounds(160, 60, 100, 100);
 			this.add(lblimg);
 			JLabel lbltitulo = new JLabel("Login", JLabel.CENTER);
 			lbltitulo.setBounds(10, 10, 400, 40);
