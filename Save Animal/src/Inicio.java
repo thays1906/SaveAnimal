@@ -17,6 +17,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
 
+
 public class Inicio {
 
 	static Color azul = new Color(221, 183, 248);
@@ -44,8 +45,10 @@ public class Inicio {
 		menu1.setFont(new Font("Sans Serif", Font.BOLD, 16));
 		JMenuItem submenu_cliente = new JMenuItem("                  Cliente               ");
 		
-		submenu_cliente.setIcon(new ImageIcon("images/casa.fw.png"));
+		ImageIcon imgcliente= new ImageIcon("images/Login Manager.png");
 		
+		
+		submenu_cliente.setIcon(imgcliente);
 		submenu_cliente.setForeground(Color.WHITE);
 	    submenu_cliente.setFont(new Font("" ,Font.BOLD , 14));
 	    submenu_cliente.setBackground(azul);
