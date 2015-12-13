@@ -73,8 +73,8 @@ public class Inicio {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Frm_amigos frma = new Frm_amigos();
-				frma.montarTela(null);
+				Frm_amigos aa = new Frm_amigos();
+				aa.montarTela(null);
 				
 			}
 		});
