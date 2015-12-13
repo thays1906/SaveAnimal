@@ -35,7 +35,7 @@ public class Inicio {
 		JMenu menu1= new JMenu("                 Cadastro              ");
 		menu1.setBackground(azul);
 		menu1.setForeground(Color.WHITE);
-		menu1.setFont(new Font("Sans Serif", Font.BOLD, 16));
+		menu1.setFont(new Font("Sans Serif", Font.BOLD, 21));
 		JMenuItem submenu_cliente = new JMenuItem("   Cliente              ");
 		
 		ImageIcon imgcliente= new ImageIcon("images/Login Manager.png");
@@ -44,14 +44,8 @@ public class Inicio {
 		submenu_cliente.setForeground(Color.WHITE);
 	    submenu_cliente.setFont(new Font("" ,Font.BOLD , 17));
 	    submenu_cliente.setBackground(azul);
-	    submenu_cliente.addMouseWheelListener(new MouseWheelListener() {
-			
-			@Override
-			public void mouseWheelMoved(MouseWheelEvent e) {
-				// TODO Auto-generated method stub
-				submenu_cliente.setBackground(Color.BLACK);
-			}
-		});
+	   
+		
 			
 			
 		
@@ -93,9 +87,24 @@ public class Inicio {
 	
 		
 		JMenu menu3 = new JMenu("       Adoção        ");	
-		menu3.setFont(new Font("Helvetica", Font.BOLD, 16));
-		menu3.setForeground(Color.WHITE);
+		menu3.setFont(new Font("Helvetica", Font.BOLD, 21));
+		menu3.setForeground(Color.RED);
 		bar.add(menu3);
+		
+		JMenuItem submenu_adotar = new JMenuItem("  Realizar Adoção  ");
+		submenu_adotar.setForeground(Color.WHITE);
+	    submenu_adotar.setFont(new Font("" ,Font.BOLD , 17));
+	    submenu_adotar.setBackground(azul);
+		menu3.add(submenu_adotar);
+		
+		JMenuItem submenu_relatorio = new JMenuItem("   Relatório de Adoções");
+		submenu_relatorio.setForeground(Color.WHITE);
+		submenu_relatorio.setFont(new Font("" ,Font.BOLD , 17));
+		submenu_relatorio.setBackground(azul);
+		
+		ImageIcon imgrelatorio = new ImageIcon("images/relatorio.fw.png");
+		submenu_relatorio.setIcon(imgrelatorio);
+		menu3.add(submenu_relatorio);
 		
 		form.setJMenuBar(bar);
 		form.setSize(800, 800);
