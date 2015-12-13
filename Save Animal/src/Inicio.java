@@ -1,5 +1,8 @@
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -16,11 +19,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 import javax.swing.ImageIcon;
 
 public class Inicio {
 
-	static Color azul = new Color(221, 183, 248);
+	//static Color azul = new Color(221, 183, 248);
+	static Color azul = new Color(0, 191, 255);
+
 	private static JMenuItem submenu_amigos;
 
 	public static void main(String[] args) {
@@ -38,11 +45,12 @@ public class Inicio {
 		form.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		JMenuBar bar= new JMenuBar();
 		bar.setBackground(azul);
-		
+		bar.setBorder(new BevelBorder(BevelBorder.LOWERED));
 		JMenu menu1= new JMenu("                 Cadastro              ");
 		menu1.setBackground(azul);
 		menu1.setForeground(Color.WHITE);
 		menu1.setFont(new Font("Sans Serif", Font.BOLD, 21));
+		
 		JMenuItem submenu_cliente = new JMenuItem("   Cliente              ");
 		
 		ImageIcon imgcliente= new ImageIcon("images/Login Manager.png");
@@ -178,7 +186,7 @@ public class Inicio {
 		
 		
 		form.add(scroll);
-		form.getContentPane().setBackground(Color.red);
+		form.getContentPane().setBackground(Color.decode("#CAE1FF"));
 		//form.setEnabled(false);
 		
 		//form.setEnabled(false);
