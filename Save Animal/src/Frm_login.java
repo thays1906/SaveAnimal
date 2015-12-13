@@ -26,7 +26,7 @@ public class Frm_login extends JPanel {
 	
 	
 	JFrame frame = new JFrame("Save Animal");
-	ImageIcon imgicon = new ImageIcon("images/casa.fw.png");
+	ImageIcon imgicon = new ImageIcon("images/casasimbolo.fw.png");
 	ImageIcon imglogin = new ImageIcon("images/usuarionovo.fw.png");
 	
 	JTextField txtusuario;

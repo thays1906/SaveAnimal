@@ -39,7 +39,7 @@ public class Inicio {
 		//parameters.put("jose", "String");
 		//parameters.put("1", "Int");
 		//xx.ExecuteNowQuery("SELECT  * FROM tSoltc where rCli like  '%?%'  and cSgmto = ? ", parameters);
-		ImageIcon imgicon = new ImageIcon("images/casa.fw.png");
+		ImageIcon imgicon = new ImageIcon("images/casasimbolo.fw.png");
 		JFrame form= new JFrame("Save Animal");
 		form.setIconImage(imgicon.getImage());
 
