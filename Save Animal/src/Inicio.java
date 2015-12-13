@@ -43,7 +43,7 @@ public class Inicio {
 		menu1.setBackground(azul);
 		menu1.setForeground(Color.WHITE);
 		menu1.setFont(new Font("Sans Serif", Font.BOLD, 16));
-		JMenuItem submenu_cliente = new JMenuItem("                  Cliente               ");
+		JMenuItem submenu_cliente = new JMenuItem("   Cliente               ");
 		
 		ImageIcon imgcliente= new ImageIcon("images/Login Manager.png");
 		
