@@ -88,16 +88,19 @@ public class Inicio {
 		
 		JMenu menu3 = new JMenu("       Adoção        ");	
 		menu3.setFont(new Font("Helvetica", Font.BOLD, 21));
-		menu3.setForeground(Color.RED);
+		menu3.setForeground(Color.white);
 		bar.add(menu3);
 		
 		JMenuItem submenu_adotar = new JMenuItem("  Realizar Adoção  ");
 		submenu_adotar.setForeground(Color.WHITE);
 	    submenu_adotar.setFont(new Font("" ,Font.BOLD , 17));
 	    submenu_adotar.setBackground(azul);
+	    
+	    ImageIcon imggato = new ImageIcon("images/gato adotado.fw.png");
+	    submenu_adotar.setIcon(imggato);
 		menu3.add(submenu_adotar);
 		
-		JMenuItem submenu_relatorio = new JMenuItem("   Relatório de Adoções");
+		JMenuItem submenu_relatorio = new JMenuItem("  Relatório de Adoções");
 		submenu_relatorio.setForeground(Color.WHITE);
 		submenu_relatorio.setFont(new Font("" ,Font.BOLD , 17));
 		submenu_relatorio.setBackground(azul);
