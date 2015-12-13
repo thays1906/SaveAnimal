@@ -1,6 +1,8 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -27,10 +29,10 @@ public class Frm_cliente extends JPanel {
 	JTextField txtnome;
 	JTextField txtendereco;
 	JTextField txtnumero;
-	JTextField txtcep;
+	JFormattedTextField txtcep; //JTextField txtcep;
 	JTextField txtbairro;
 	JTextField txtcidade;
-	JTextField txtestado;
+	JComboBox comboestado;
 	
 		public Frm_cliente(){
 			
@@ -141,7 +143,7 @@ public class Frm_cliente extends JPanel {
 			//textbox cep
 			MaskFormatter MascaraCep = new MaskFormatter(" #####-###");
 			MascaraCep.setPlaceholderCharacter('_');
-			JFormattedTextField txtcep = new JFormattedTextField(MascaraCep);
+			 txtcep = new JFormattedTextField(MascaraCep);
 			txtcep.setBounds(150, 310, 90, 25);
 			txtcep.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtcep);
@@ -153,7 +155,7 @@ public class Frm_cliente extends JPanel {
 			this.add(lblbairro);
 			
 			//textbox bairro
-			JTextField txtbairro = new JTextField();
+			txtbairro = new JTextField();
 			txtbairro.setBounds(150, 340, 200, 23);
 			txtbairro.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtbairro);
@@ -165,7 +167,7 @@ public class Frm_cliente extends JPanel {
 			this.add(lblcidade);
 			
 			//txt cidade
-			JTextField txtcidade = new JTextField();
+			 txtcidade = new JTextField();
 			txtcidade.setBounds(150, 370, 200, 23);
 			txtcidade.setFont(new Font("Sans Serif", Font.PLAIN, 17));
 			this.add(txtcidade);
@@ -179,7 +181,7 @@ public class Frm_cliente extends JPanel {
 			
 			String[] estados = { " ","Acre","Alagoas","Amapá","Amazonas","Bahia","Ceará","Distrito Federal","Espírito Santo","Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul","Minas Gerais","Pará","Paraíba","Paraná","Pernambuco","Piauí","Rio de Janeiro","Rio Grande do Norte","Rio Grande do Sul","Rondônia","Roraima","Santa Catarina","São Paulo","Sergipe","Tocantins"}; 
 			//textbox estado
-			JComboBox comboestado = new JComboBox(estados);
+			comboestado = new JComboBox(estados);
 			comboestado.setBounds(570, 370, 150, 23);
 			this.add(comboestado);
 		
@@ -193,7 +195,8 @@ public class Frm_cliente extends JPanel {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					LimparCampos();
+					//LimparCampos();
+					Cadastrar();
 					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
 				}
 			});
@@ -234,6 +237,34 @@ public class Frm_cliente extends JPanel {
 		
 	}
 }
+		public boolean Cadastrar()
+		{
+			//String query = "INSERT INTO Cliente(NomeCliente,Cpf,DataNasc,Telefone,Email,Endereco,Num,CEP,Bairro,Cidade,Estado)" +
+					          //"VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+			
+			String query = "INSERT INTO Cliente(NomeCliente,Cpf)VALUES(?,?)";
+			
+			ArrayList<Object> objetos = new ArrayList<>();
+			
+			objetos.add(txtnome.getText());
+			objetos.add(txtcpf.getText());
+			//objetos.add(txtdata.getText());
+			//objetos.add(txtfone.getText());
+			//objetos.add(txtemail.getText());
+			//objetos.add(txtendereco.getText());
+			//objetos.add(txtnumero.getText());
+			//objetos.add(txtcep.getValue());
+			//objetos.add(txtbairro.getText());
+			//objetos.add(txtcidade.getText());
+			//objetos.add(comboestado.getSelectedItem());
+			
+			ConexaoBanco banco = new ConexaoBanco();
+			banco.ExecuteNowQuery(query, objetos);
+			
+			return true;
+			
+			
+		}
 		public void LimparCampos()
 		{
 			txtnome.setText("");
@@ -246,7 +277,7 @@ public class Frm_cliente extends JPanel {
 			txtcep.setText("");
 			txtcidade.setText("");
 			txtbairro.setText("");
-			txtestado.setText("");
+			comboestado.setSelectedIndex(0);
 		}
 		public  void montarTela (String[] args) {       
 	          
