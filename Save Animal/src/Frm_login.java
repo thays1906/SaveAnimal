@@ -1,4 +1,6 @@
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -7,6 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import javax.crypto.CipherInputStream;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -19,10 +22,13 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 public class Frm_login extends JPanel {
-
-	//private static final long serialVersionUID = 2427775509692175315L;
+	
+	
+	
 	JFrame frame = new JFrame("Save Animal");
 
+	ImageIcon imglogin = new ImageIcon("images/usuario.png");
+	
 	JTextField txtusuario;
 	JTextField txtsenha;
 	JFrame _jframePai;
@@ -30,41 +36,49 @@ public class Frm_login extends JPanel {
 	public Frm_login() {
 
 		try {
-
+			
 			this.setLayout(null);
+			
+			
+			Image img1 = imglogin.getImage();
+			Image newimg = img1.getScaledInstance(80, 100, java.awt.Image.SCALE_SMOOTH);
+			JLabel lblimg = new JLabel(new ImageIcon(newimg));
+			lblimg.setBounds(170, 60, 80, 100);
+			this.add(lblimg);
 			JLabel lbltitulo = new JLabel("Login", JLabel.CENTER);
-			lbltitulo.setBounds(20, 20, 400, 40);
-			lbltitulo.setFont(new Font("Serif", Font.BOLD, 24));
+			lbltitulo.setBounds(10, 10, 400, 40);
+			lbltitulo.setFont(new Font("Serif", Font.BOLD, 26));
 			this.add(lbltitulo);
 
 			// label usuario
 			JLabel lblusuario = new JLabel("Usuário:", JLabel.LEFT);
-			lblusuario.setBounds(20, 130, 150, 20);
-			lblusuario.setFont(new Font("Sans Serif", Font.BOLD, 17));
+			lblusuario.setBounds(60, 180, 150, 20);
+			lblusuario.setFont(new Font("Sans Serif", Font.BOLD, 20));
 			this.add(lblusuario);
 
 			// textbox usuario
 			txtusuario = new JTextField();
-			txtusuario.setBounds(110, 130, 150, 23);
-			txtusuario.setFont(new Font("Sans Serif", Font.PLAIN, 17));
+			txtusuario.setBounds(150, 180, 150, 25);
+			txtusuario.setFont(new Font("Sans Serif", Font.PLAIN, 18));
 			this.add(txtusuario);
 
 			// label senha
 			JLabel lblsenha = new JLabel("Senha:", JLabel.LEFT);
-			lblsenha.setBounds(20, 160, 100, 20);
-			lblsenha.setFont(new Font("Sans Serif", Font.BOLD, 17));
+			lblsenha.setBounds(60, 210, 100, 20);
+			lblsenha.setFont(new Font("Sans Serif", Font.BOLD, 20));
 			this.add(lblsenha);
 
 			// textbox senha
 			JPasswordField txtsenha = new JPasswordField(11);
 			// txtsenha= new JTextField();
-			txtsenha.setBounds(110, 160, 150, 23);
-			txtsenha.setFont(new Font("Sans Serif", Font.PLAIN, 17));
+			txtsenha.setBounds(150, 210, 150, 25);
+			txtsenha.setFont(new Font("Sans Serif", Font.PLAIN, 18));
 			this.add(txtsenha);
 
 			// btn login
 			JButton btnlogin = new JButton("Fazer Login");
-			btnlogin.setBounds(100, 250, 180, 28);
+			btnlogin.setBounds(110, 300, 180, 50);
+			btnlogin.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
 			btnlogin.addActionListener(new ActionListener() {
 
 				@Override
@@ -158,7 +172,8 @@ public class Frm_login extends JPanel {
 			}
 		});
 		frame.setSize(400, 400);
-		frame.getContentPane().add(this);
+		frame.getContentPane().add(this).setBackground(Color.decode("#CAE1FF"));
+		//frame.getContentPane().
 		// frame.pack(); diminui a tela
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);

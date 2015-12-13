@@ -25,7 +25,7 @@ import javax.swing.ImageIcon;
 
 public class Inicio {
 
-	//static Color azul = new Color(221, 183, 248);
+	
 	static Color azul = new Color(0, 191, 255);
 
 	private static JMenuItem submenu_amigos;
