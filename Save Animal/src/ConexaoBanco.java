@@ -5,73 +5,65 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.swing.JOptionPane;
 
 public class ConexaoBanco {
-	
+
 	static Connection conn;
 	static PreparedStatement stm;
-	String url = "jdbc:sqlserver://localhost:1433;databaseName=SaveAnimal; user=sa;password=qweasd"; 	
+	String url = "jdbc:sqlserver://localhost:1433;databaseName=SaveAnimal; user=sa;password=qweasd";
 
-	public void AbrirConexao(){
-		try
-		{
+	public void AbrirConexao() {
+		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			conn = DriverManager.getConnection(url);
-			
-		}
-		catch(Exception e){
-			JOptionPane.showMessageDialog(null,e.getMessage());
+
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 
 	}
-	public ConexaoBanco(){
-		 AbrirConexao();
+
+	public ConexaoBanco() {
+		AbrirConexao();
 	}
-	
-	public boolean ExecuteNowQuery(String query, Map<String, String> parameters){
+
+	public ResultSet ExecuteScalar(String query, ArrayList<Object> objetos){
 		try{
+			ResultSet result;
+			
 			stm = conn.prepareStatement(query);
-			if(parameters != null)
+			if(objetos != null)
 			{
-				int i = 0;
-				for(Map.Entry<String, String> x : parameters.entrySet()){
-					
-					JOptionPane.showMessageDialog(null, x.getValue());
-					i = i+1;
+				for(int x = 0; x< objetos.size(); x++)
+				{
+					stm.setObject(x+1,objetos.get(x));	
 				}
 			}
+			result =  stm.executeQuery();
+			return result;
 			
-			 ResultSet retorno =  stm.executeQuery();
-			 
-			 while (retorno.next())
-			 {
-				 JOptionPane.showMessageDialog(null, retorno.getString("nSoltc"));
-			 }
-			return true;
+		}catch(Exception e){
+		return null;
 		}
-		catch(Exception e){
-			JOptionPane.showMessageDialog(null,e.getMessage());
+	}
+
+	public boolean ExecuteNowQuery(String query, ArrayList<Object> objetos) {
+		try {
+			stm = conn.prepareStatement(query);
+			if (objetos != null) {
+				for (int x = 0; x < objetos.size(); x++) {
+					stm.setObject(x + 1, objetos.get(x));
+				}
+			}
+			stm.executeQuery();
+			return true;
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
 			return false;
 		}
 	}
-	
-	public ResultSet ResultSet(String query)
-	{
-		 try{
-	 		 ResultSet retorno =  stm.executeQuery(query);
-	  
-	 		return retorno;
-		 	}
-		 	catch(Exception e){
-		 		JOptionPane.showMessageDialog(null, e.getMessage());
-		 		return null;
-		 	}
-	}
-	
-	
-	
-
 }

@@ -104,11 +104,11 @@ public class Inicio {
 		imglogo.setBounds(100, 100, 400, 400);
 		
 		form.add(imglogo);
-		
+		form.setEnabled(false);
 		
 		//form.setEnabled(false);
 		Frm_login log = new Frm_login();
-		log.montarTela(null);
+		log.montarTela(null,form);
 		
 	}
 
