@@ -6,6 +6,7 @@ import java.awt.event.WindowListener;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.crypto.CipherInputStream;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -22,7 +23,7 @@ public class Frm_login extends JPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2427775509692175315L;
+	//private static final long serialVersionUID = 2427775509692175315L;
 	JFrame frame = new JFrame("Save Animal");
 
 	JTextField txtusuario;
@@ -163,7 +164,7 @@ public class Frm_login extends JPanel {
 		frame.getContentPane().add(this);
 		// frame.pack(); diminui a tela
 		frame.setVisible(true);
-		frame.setLocation(50, 50);
+		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 	}
 }

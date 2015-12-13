@@ -2,13 +2,20 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.util.Locale;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.ImageIcon;
 
 public class Inicio {
@@ -28,7 +35,7 @@ public class Inicio {
 		JFrame form= new JFrame("Save Animal");
 		
 		form.setLayout(null);
-		
+		form.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		JMenuBar bar= new JMenuBar();
 		bar.setBackground(azul);
 		
@@ -118,12 +125,65 @@ public class Inicio {
 		
 		imglogo.setBounds(100, 100, 400, 400);
 		
-		form.add(imglogo);
+		//form.add(imglogo);
+		String[] colunas = new String[]{"Nome","Idade","Sexo"};
+		String[][] dados = new String[][]{
+			{"Rodrigo","28","Masculino"},
+			{"Maria","30","Feminino"}
+		};
+		
+		
+		JTable tabela = new JTable(dados,colunas);
+		tabela.setVisible(true);
+		JScrollPane scroll = new JScrollPane();
+		scroll.setViewportView(tabela);
+		scroll.setVisible(true);
+		scroll.setBounds(20,20,200,200);
+		
+		tabela.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				
+				JOptionPane.showMessageDialog(null,tabela.getValueAt(tabela.getSelectedRow(), 0));
+				
+				
+			}
+		});
+		
+		
+		form.add(scroll);
+		form.getContentPane().setBackground(Color.red);
 		//form.setEnabled(false);
 		
 		//form.setEnabled(false);
-		//Frm_login log = new Frm_login();
-		//log.montarTela(null,form);
+		Frm_login log = new Frm_login();
+		log.montarTela(null,form);
 		
 	}
 
