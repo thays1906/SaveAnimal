@@ -59,7 +59,7 @@ public class Frm_cliente extends JPanel {
 		try {
 
 			this.setLayout(null);
-			
+			codigoCliente = new JTextField();
 			MostrarPesquisar();
 			// MostrarCadastrar();
 		} catch (Exception e) {
@@ -77,6 +77,9 @@ public class Frm_cliente extends JPanel {
 
 			objetos.add("%" + txtPesquisanome.getText() + "%");
 
+			btnExcluirPesquisa.setEnabled(false);
+			btnEditarPesquisa.setEnabled(false);
+			
 			ConexaoBanco banco = new ConexaoBanco();
 			tableCLiente = new JTable();
 			tableCLiente.setBounds(300, 300, 800, 300);
@@ -149,7 +152,7 @@ public class Frm_cliente extends JPanel {
 					codigoCliente = new JTextField();
 					codigoCliente.setText(codigo);
 					btnExcluirPesquisa.setEnabled(true);
-
+					btnEditarPesquisa.setEnabled(true);
 					// TODO Auto-generated method stub
 
 				}
@@ -205,6 +208,7 @@ public class Frm_cliente extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pesquisar.setVisible(false);
+				codigoCliente.setText("");
 				MostrarCadastrar();
 
 			}
@@ -249,23 +253,65 @@ public class Frm_cliente extends JPanel {
 		});
 		pesquisar.add(btnExcluirPesquisa); 
 		
-		
 		btnEditarPesquisa = new JButton("Editar");
-		btnEditarPesquisa.setBounds(300, 600, 100, 80);
+		btnEditarPesquisa.setBounds(450, 600, 100, 80);
 		btnEditarPesquisa.setEnabled(false);
 		btnEditarPesquisa.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					
+					EditarCliente();
 			}
 		});
-		pesquisar.add(btnExcluirPesquisa);
+		pesquisar.add(btnEditarPesquisa);
 		
 		this.add(pesquisar);
 
 	}
 
+	public void EditarCliente()
+	{
+		try
+		
+		{
+			
+		pesquisar.setVisible(false);
+		//cadastrar.setVisible(true);
+		MostrarCadastrar();
+		ResultSet ret;
+		String query = "SELECT NomeCliente,Cpf,convert(varchar,DataNasc, 103) as DataNasc,Telefone,Email,Endereco,Num,CEP,Bairro,Cidade,Estado FROM Cliente Where Codigo = ? ";
+		ArrayList<Object> objetos = new ArrayList<>();
+		
+		ConexaoBanco banco = new ConexaoBanco();
+		String cod = codigoCliente.getText();
+		
+		objetos.add(cod);
+		ret = banco.ExecuteScalar(query, objetos);
+		while(ret.next()){
+			txtnome.setText(ret.getString("NomeCliente"));
+			txtcpf.setText(ret.getString("Cpf"));
+			txtdata.setValue(ret.getString("DataNasc"));
+			txtfone.setValue(ret.getString("Telefone"));
+			txtemail.setText(ret.getString("Email"));
+			txtendereco.setText(ret.getString("Endereco"));
+			txtnumero.setText(ret.getString("Num"));
+			txtcep.setValue(ret.getString("CEP"));
+			txtbairro.setText(ret.getString("Bairro"));
+			txtcidade.setText(ret.getString("Cidade"));
+			comboestado.setSelectedItem(ret.getString("Estado"));
+		   //Estado
+			
+			
+			
+			
+		}
+		}
+		catch(Exception e){
+			
+		}
+		
+		this.add(cadastrar);
+	}
 	public void MostrarCadastrar() {
 		try {
 
@@ -502,8 +548,29 @@ public class Frm_cliente extends JPanel {
 		// Cliente(NomeCliente,Cpf,DataNasc,Telefone,Email,Endereco,Num,CEP,Bairro,Cidade,Estado)"
 		// +
 		// "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-
-		String query = "INSERT INTO Cliente(NomeCliente,Cpf,DataNasc,Telefone,Email,Endereco,Num,CEP,Bairro,Cidade,Estado)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+		
+		String query = "";
+		if (codigoCliente.getText() == "" || codigoCliente.equals(""))
+		{
+		query = "INSERT INTO Cliente(NomeCliente,Cpf,DataNasc,Telefone,Email,Endereco,Num,CEP,Bairro,Cidade,Estado)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+		}
+		else
+		{
+			query = "UPDATE  Cliente "
+					+ "SET NomeCliente = ?, "
+					+ "    Cpf         = ?, "
+					+ "    DataNasc    = ?, "
+					+ "    Telefone    = ?, "
+					+ "    Email       = ?, "
+					+ "    Endereco    = ?, "
+					+ "    Num         = ?, "
+					+ "    CEP         = ?, "
+					+ "    Bairro      = ?, "
+					+ "    Cidade      = ?, "
+					+ "    Estado      = ?  "
+					+ "Where Codigo = ? ";
+		}
+		
 
 		ArrayList<Object> objetos = new ArrayList<>();
 
@@ -536,6 +603,11 @@ public class Frm_cliente extends JPanel {
 		objetos.add(txtcidade.getText());
 		objetos.add(comboestado.getSelectedItem());
 
+		if(codigoCliente.getText()!= "")
+		{
+			objetos.add(codigoCliente.getText());
+			codigoCliente.setText("");
+		}
 		ConexaoBanco banco = new ConexaoBanco();
 		banco.ExecuteNowQuery(query, objetos);
 
