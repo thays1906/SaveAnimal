@@ -247,7 +247,7 @@ public class Frm_cliente extends JPanel {
 
 			}
 		});
-		pesquisar.add(btnExcluirPesquisa);
+		pesquisar.add(btnExcluirPesquisa); 
 		
 		
 		btnEditarPesquisa = new JButton("Editar");
