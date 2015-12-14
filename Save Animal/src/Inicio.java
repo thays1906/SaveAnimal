@@ -179,6 +179,18 @@ public class Reminder{
 		menu4.setForeground(Color.white);
 		bar.add(menu4);
 		
+		
+		// submenu sobre
+		ImageIcon imgsobre = new ImageIcon("images/casa.fw.png");
+		Image imagesobre = imgsobre.getImage();
+		Image imagesob = imagesobre.getScaledInstance(40, 35, java.awt.Image.SCALE_SMOOTH);
+		JMenuItem submenu_sobre = new JMenuItem(" About Save Animal              ");
+		submenu_sobre.setIcon(new ImageIcon(imagesob));
+		submenu_sobre.setForeground(Color.WHITE);
+		submenu_sobre.setFont(new Font("" ,Font.BOLD , 17));
+		submenu_sobre.setBackground(azul);
+		menu4.add(submenu_sobre);
+		
 		JMenu menu5 = new JMenu(" Logout                           ");
 		ImageIcon sair = new ImageIcon("images/logout.png");
 		menu5.setIcon(sair);
@@ -190,6 +202,7 @@ public class Reminder{
 			public void menuSelected(MenuEvent arg0) {
 				if(JOptionPane.showConfirmDialog(null, "Deseja fazer logout?",null,JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION){
 					System.exit(0);
+					
 				}
 				
 			}
@@ -198,7 +211,6 @@ public class Reminder{
 			public void menuDeselected(MenuEvent arg0) {
 				// TODO Auto-generated method stub
 				
-			}
 			
 			@Override
 			public void menuCanceled(MenuEvent arg0) {
