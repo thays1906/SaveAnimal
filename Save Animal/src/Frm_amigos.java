@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
+
+import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.SwingUtilities;
@@ -180,7 +182,7 @@ public class Frm_amigos extends JPanel {
 
 			//btn cadastrar
 			JButton btncadastrar = new JButton("Cadastrar Dados");
-			btncadastrar.setBounds(30, 600, 200, 30);
+			btncadastrar.setBounds(20, 600, 200, 30);
 			btncadastrar.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
 			btncadastrar.addActionListener( new ActionListener() {
 				
@@ -192,10 +194,13 @@ public class Frm_amigos extends JPanel {
 			});
 			this.add(btncadastrar);
 			
-			
+			JButton btnatualizar = new JButton("Atualizar dados");
+			btnatualizar.setBounds(230, 600, 200, 30);
+			btnatualizar.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
+			this.add(btnatualizar);
 				//btn limpar
 			JButton btnlimpar = new JButton("Limpar");
-			btnlimpar.setBounds(290, 600, 200, 30);
+			btnlimpar.setBounds(445, 600, 150, 30);
 			btnlimpar.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
 			this.add(btnlimpar);
 			btnlimpar.addActionListener(new ActionListener() {
@@ -208,7 +213,7 @@ public class Frm_amigos extends JPanel {
 			
 			//btn voltar
 			JButton btnvoltar = new JButton("Voltar");
-			btnvoltar.setBounds(550, 600, 200, 30);
+			btnvoltar.setBounds(610, 600, 150, 30);
 			btnvoltar.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
 			this.add(btnvoltar);
 			

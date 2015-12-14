@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -59,6 +60,8 @@ public class Frm_cliente extends JPanel {
 
 		try {
 
+			cadastrar.setBackground(Color.decode("#CAE1FF"));
+			pesquisar.setBackground(Color.decode("#CAE1FF"));
 			this.setLayout(null);
 			codigoCliente = new JTextField();
 			MostrarPesquisar();
@@ -191,7 +194,8 @@ public class Frm_cliente extends JPanel {
 		pesquisar.add(txtPesquisanome);
 
 		JButton btnPesqui = new JButton("Pesquisar");
-		btnPesqui.setBounds(50, 600, 100, 80);
+		btnPesqui.setBounds(30, 600, 150, 70);
+		btnPesqui.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 20));
 		btnPesqui.addActionListener(new ActionListener() {
 
 			@Override
@@ -203,7 +207,8 @@ public class Frm_cliente extends JPanel {
 
 		pesquisar.add(btnPesqui);
 		JButton btnCadas = new JButton("Cadastrar");
-		btnCadas.setBounds(180, 600, 100, 80);
+		btnCadas.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 20));
+		btnCadas.setBounds(220, 600, 150, 70);
 		btnCadas.addActionListener(new ActionListener() {
 
 			@Override
@@ -216,9 +221,9 @@ public class Frm_cliente extends JPanel {
 			}
 		});
 		pesquisar.add(btnCadas);
-
 		btnExcluirPesquisa = new JButton("Excluir");
-		btnExcluirPesquisa.setBounds(300, 600, 100, 80);
+		btnExcluirPesquisa.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 20));
+		btnExcluirPesquisa.setBounds(410, 600, 150, 70);
 		btnExcluirPesquisa.setEnabled(false);
 		btnExcluirPesquisa.addActionListener(new ActionListener() {
 
@@ -255,8 +260,10 @@ public class Frm_cliente extends JPanel {
 		});
 		pesquisar.add(btnExcluirPesquisa); 
 		
+		
 		btnEditarPesquisa = new JButton("Editar");
-		btnEditarPesquisa.setBounds(450, 600, 100, 80);
+		btnEditarPesquisa.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 20));
+		btnEditarPesquisa.setBounds(600, 600, 150, 70);
 		btnEditarPesquisa.setEnabled(false);
 		btnEditarPesquisa.addActionListener(new ActionListener() {
 
