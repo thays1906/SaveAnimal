@@ -52,6 +52,7 @@ public class Frm_cliente extends JPanel {
 	JButton btnExcluirPesquisa;
 	JButton btnEditarPesquisa;
 	
+	JButton btnEditar = new JButton();
 	DefaultTableModel aMOdel;
 	
 	public Frm_cliente() {
@@ -208,8 +209,9 @@ public class Frm_cliente extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pesquisar.setVisible(false);
-				codigoCliente.setText("");
-				MostrarCadastrar();
+				codigoCliente.setText("A");
+				btnEditar.setEnabled(false);
+				MostrarCadastrar(false);
 
 			}
 		});
@@ -277,7 +279,7 @@ public class Frm_cliente extends JPanel {
 			
 		pesquisar.setVisible(false);
 		//cadastrar.setVisible(true);
-		MostrarCadastrar();
+		MostrarCadastrar(true);
 		ResultSet ret;
 		String query = "SELECT NomeCliente,Cpf,convert(varchar,DataNasc, 103) as DataNasc,Telefone,Email,Endereco,Num,CEP,Bairro,Cidade,Estado FROM Cliente Where Codigo = ? ";
 		ArrayList<Object> objetos = new ArrayList<>();
@@ -312,9 +314,9 @@ public class Frm_cliente extends JPanel {
 		
 		this.add(cadastrar);
 	}
-	public void MostrarCadastrar() {
+	public void MostrarCadastrar(boolean editar) {
 		try {
-
+			AtualizarTela();
 			pesquisar.setVisible(false);
 			JLabel lbltitulo = new JLabel("Cadastro de Cliente", JLabel.CENTER);
 			lbltitulo.setBounds(200, 20, 400, 40);
@@ -492,6 +494,15 @@ public class Frm_cliente extends JPanel {
 			JButton btncadastrar = new JButton("Cadastrar Dados");
 			btncadastrar.setBounds(30, 600, 200, 30);
 			btncadastrar.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
+			if (editar){
+				btncadastrar.setEnabled(false);
+			}
+			else
+			{
+				btncadastrar.setEnabled(true);
+			}
+			
+			
 			btncadastrar.addActionListener(new ActionListener() {
 
 				@Override
@@ -502,12 +513,36 @@ public class Frm_cliente extends JPanel {
 					MostrarPesquisar();
 				}
 			});
+			
+			btnEditar = new JButton("Atualizar Dados");
+			btnEditar.setBounds(250, 600, 200, 30);
+			btnEditar.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
+			if (editar)
+			{
+				btnEditar.setEnabled(true);
+			}
+			else
+			{
+				btnEditar.setEnabled(false);
+			}
+			btnEditar.addActionListener(new ActionListener() {
+			
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// LimparCampos();
+					EditarSql();
+					JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+					MostrarPesquisar();
+				}
+			});
+			
 			// this.add(btncadastrar);
 			cadastrar.add(btncadastrar);
+			cadastrar.add(btnEditar);
 
 			// btn limpar
 			JButton btnlimpar = new JButton("Limpar");
-			btnlimpar.setBounds(290, 600, 200, 30);
+			btnlimpar.setBounds(460, 600, 120, 30);
 			btnlimpar.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
 			// this.add(btnlimpar);
 			cadastrar.add(btnlimpar);
@@ -519,10 +554,10 @@ public class Frm_cliente extends JPanel {
 				}
 			});
 
-			// btn voltar
+			// btn voltarW
 			JButton btnvoltar = new JButton("Voltar");
 			btnvoltar.setFont(new Font("Sans Serif", Font.ROMAN_BASELINE, 16));
-			btnvoltar.setBounds(550, 600, 200, 30);
+			btnvoltar.setBounds(590, 600, 120, 30);
 			// this.add(btnvoltar);
 			cadastrar.add(btnvoltar);
 
@@ -544,18 +579,53 @@ public class Frm_cliente extends JPanel {
 	}
 
 	public boolean CadastrarSql() {
-		// String query = "INSERT INTO
-		// Cliente(NomeCliente,Cpf,DataNasc,Telefone,Email,Endereco,Num,CEP,Bairro,Cidade,Estado)"
-		// +
-		// "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+		
+		
+		String query = "INSERT INTO Cliente(NomeCliente,Cpf,DataNasc,Telefone,Email,Endereco,Num,CEP,Bairro,Cidade,Estado)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+		
+
+		ArrayList<Object> objetos = new ArrayList<>();
+
+		objetos.add(txtnome.getText());
+		objetos.add(txtcpf.getText());
+
+		SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
+		String data = "";
+		data = txtdata.getValue().toString();
+		java.util.Date invoiceDate = null;
+		try {
+			invoiceDate = formatDate.parse(data);
+			String test = formatDate.format(invoiceDate);
+			invoiceDate = formatDate.parse(test);
+
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		java.sql.Date sqlDate = new Date(invoiceDate.getTime());
+
+		objetos.add(sqlDate);
+		objetos.add(txtfone.getText());
+		objetos.add(txtemail.getText());
+		objetos.add(txtendereco.getText());
+		objetos.add(txtnumero.getText());
+		objetos.add(txtcep.getValue());
+		objetos.add(txtbairro.getText());
+		objetos.add(txtcidade.getText());
+		objetos.add(comboestado.getSelectedItem());
+
+		ConexaoBanco banco = new ConexaoBanco();
+		banco.ExecuteNowQuery(query, objetos);
+
+		return true;
+
+	}
+
+	
+    public boolean EditarSql() {
 		
 		String query = "";
-		if (codigoCliente.getText() == "" || codigoCliente.equals(""))
-		{
-		query = "INSERT INTO Cliente(NomeCliente,Cpf,DataNasc,Telefone,Email,Endereco,Num,CEP,Bairro,Cidade,Estado)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-		}
-		else
-		{
 			query = "UPDATE  Cliente "
 					+ "SET NomeCliente = ?, "
 					+ "    Cpf         = ?, "
@@ -569,7 +639,7 @@ public class Frm_cliente extends JPanel {
 					+ "    Cidade      = ?, "
 					+ "    Estado      = ?  "
 					+ "Where Codigo = ? ";
-		}
+		
 		
 
 		ArrayList<Object> objetos = new ArrayList<>();
@@ -637,4 +707,10 @@ public class Frm_cliente extends JPanel {
 		// frame.pack(); diminui a tela
 		frame.setVisible(true);
 	}
+	
+	public void AtualizarTela() {
+
+		frame.repaint();
+	}
+	
 }
