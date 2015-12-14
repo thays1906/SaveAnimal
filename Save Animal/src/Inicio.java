@@ -36,7 +36,7 @@ public class Inicio {
 	
 	
 	static Color azul = new Color(0, 191, 255);
-
+	static JFrame form;
 	private static JMenuItem submenu_amigos;
 public class Reminder{
 	Timer timer;
@@ -67,7 +67,7 @@ public class Reminder{
 		
 		
 		ImageIcon imgicon = new ImageIcon("images/casasimbolo.fw.png");
-		JFrame form= new JFrame("Save Animal");
+		form= new JFrame("Save Animal");
 		form.setIconImage(imgicon.getImage());
 		form.setLayout(null);
 		form.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -145,9 +145,6 @@ public class Reminder{
 		
 		bar.add(menu1);
 	
-		
-		
-		
 	
 		
 		JMenu menu3 = new JMenu("                 Adoção                   ");	
@@ -189,6 +186,15 @@ public class Reminder{
 		submenu_sobre.setForeground(Color.WHITE);
 		submenu_sobre.setFont(new Font("" ,Font.BOLD , 17));
 		submenu_sobre.setBackground(azul);
+		
+		submenu_sobre.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Versão: 1.0.0 \n Desenvolvedores: Alan,Thays \n Contato: suporte@saveanimal.com");
+				
+			}
+		});
 		menu4.add(submenu_sobre);
 		
 		JMenu menu5 = new JMenu(" Logout                           ");
@@ -211,7 +217,7 @@ public class Reminder{
 			public void menuDeselected(MenuEvent arg0) {
 				// TODO Auto-generated method stub
 				
-			
+			}
 			@Override
 			public void menuCanceled(MenuEvent arg0) {
 				// TODO Auto-generated method stub
@@ -233,10 +239,13 @@ public class Reminder{
 		form.getContentPane().setBackground(Color.decode("#CAE1FF"));
 		//form.setEnabled(false);
 		
-		//form.setEnabled(false);
+		form.setEnabled(false);
 		Frm_login log = new Frm_login();
 		log.montarTela(null,form);
 		
 	}
 
+	public void Fechar(){
+		form.dispose();
+	}
 }

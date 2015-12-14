@@ -75,7 +75,7 @@ public class Frm_cliente extends JPanel {
 
 		try {
 
-			String query = "SELECT TOP 10 Codigo,NomeCliente,Cpf FROM Cliente WHERE NomeCliente LIKE ?";
+			String query = "SELECT TOP 10 Codigo,NomeCliente,Cpf,telefone,Email FROM Cliente WHERE NomeCliente LIKE ?";
 
 			ArrayList<Object> objetos = new ArrayList<>();
 
@@ -91,7 +91,7 @@ public class Frm_cliente extends JPanel {
 			retorno = banco.ExecuteScalar(query, objetos);
 			ResultSetMetaData metaData = retorno.getMetaData();
 
-			String[] colunaName = { "Codigo", "NomeCliente", "Cpf" };
+			String[] colunaName = { "Codigo", "NomeCliente", "Cpf","Fone","Email" };
 			aMOdel = null;
 			aMOdel= new DefaultTableModel(null, colunaName);
 			aMOdel.setColumnIdentifiers(colunaName);
@@ -110,9 +110,11 @@ public class Frm_cliente extends JPanel {
 			}
 			tableCLiente.repaint();
 			tableCLiente.setModel(aMOdel);
-			tableCLiente.getColumnModel().getColumn(0).setPreferredWidth(100);
+			tableCLiente.getColumnModel().getColumn(0).setPreferredWidth(80);
 			tableCLiente.getColumnModel().getColumn(1).setPreferredWidth(300);
 			tableCLiente.getColumnModel().getColumn(2).setPreferredWidth(200);
+			tableCLiente.getColumnModel().getColumn(3).setPreferredWidth(200);
+			tableCLiente.getColumnModel().getColumn(4).setPreferredWidth(250);
 			
 			
 			// JTable tabela = new JTable(dados,colunas);

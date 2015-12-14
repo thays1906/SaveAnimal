@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -114,6 +115,7 @@ public class Frm_login extends JPanel {
 				JOptionPane.showMessageDialog(null, "Bem Vindo");
 				frame.setVisible(false);
 				_jframePai.setEnabled(true);
+				_jframePai.setState(Frame.NORMAL);
 				
 			}
 		} catch (Exception e) {
@@ -161,7 +163,12 @@ public class Frm_login extends JPanel {
 			@Override
 			public void windowClosed(WindowEvent e) {
 				// TODO Auto-generated method stub
-				_jframePai.setVisible(false);
+				//_jframePai.Fechar();
+				_jframePai.setEnabled(true);
+				_jframePai.dispose();
+				frame.dispose();
+				System.exit(0);
+				//_jframePai.setVisible(false);
 				
 			}
 			
