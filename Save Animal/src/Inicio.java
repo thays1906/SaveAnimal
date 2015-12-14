@@ -24,10 +24,12 @@ import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 import javax.swing.ImageIcon;
 
 public class Inicio {
-
+	
 	
 	static Color azul = new Color(0, 191, 255);
 
@@ -46,9 +48,17 @@ public class Inicio {
 		ImageIcon imgicon = new ImageIcon("images/casasimbolo.fw.png");
 		JFrame form= new JFrame("Save Animal");
 		form.setIconImage(imgicon.getImage());
-
 		form.setLayout(null);
 		form.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
+		ImageIcon logo = new ImageIcon("images/casa.fw.png");
+		JLabel lbllogo = new JLabel(logo);
+		JLabel lblbemvindo = new JLabel("Bem Vindo à Save Animal");
+		lblbemvindo.setFont(new Font("Sans Serif", Font.BOLD, 36));
+		lblbemvindo.setBounds(80, -80, 500, 300);
+		lbllogo.setBounds(350, 100, 550,600);
+		form.add(lbllogo);
+		form.add(lblbemvindo);
 		
 		JMenuBar bar= new JMenuBar();
 		bar.setBackground(azul);
@@ -153,6 +163,28 @@ public class Inicio {
 		menu5.setIcon(sair);
 		menu5.setFont(new Font("Helvetica", Font.BOLD, 21));
 		menu5.setForeground(Color.white);
+		menu5.addMenuListener(new MenuListener() {
+			
+			@Override
+			public void menuSelected(MenuEvent arg0) {
+				if(JOptionPane.showConfirmDialog(null, "Deseja fazer logout?",null,JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION){
+					System.exit(0);
+				}
+				
+			}
+			
+			@Override
+			public void menuDeselected(MenuEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void menuCanceled(MenuEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		bar.add(menu5);
 		
 		form.setJMenuBar(bar);
