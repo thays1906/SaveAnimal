@@ -9,7 +9,7 @@ public class ConexaoBanco {
 
 	static Connection conn;
 	static PreparedStatement stm;
-	String url = "jdbc:sqlserver://localhost:1433;databaseName=SaveAnimal; user=sa;password=qweasd";
+	String url = "jdbc:sqlserver://NOTE-ALAN:1433;databaseName=SaveAnimal; user=sa;password=qweasd";
 
 	public void AbrirConexao() {
 		try {
