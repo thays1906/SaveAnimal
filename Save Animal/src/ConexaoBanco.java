@@ -54,7 +54,7 @@ public class ConexaoBanco {
 					stm.setObject(x + 1, objetos.get(x));
 				}
 			}
-			stm.executeQuery();
+			stm.executeUpdate();
 			return true;
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
