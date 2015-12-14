@@ -11,6 +11,9 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.ScheduledExecutorService;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,14 +31,29 @@ import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 import javax.swing.ImageIcon;
 
+
 public class Inicio {
 	
 	
 	static Color azul = new Color(0, 191, 255);
 
 	private static JMenuItem submenu_amigos;
+public class Reminder{
+	Timer timer;
+	public Reminder(int seconds){
+		timer= new Timer();
+		timer.schedule(new RemindTask(), seconds);
+	}
+}
+	public class RemindTask extends TimerTask{
 
-	
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			JOptionPane.showMessageDialog(null, "qq");
+		}
+		
+	}
 
 	public static void main(String[] args) {
 		//KKK
@@ -45,6 +63,9 @@ public class Inicio {
 		//parameters.put("jose", "String");
 		//parameters.put("1", "Int");
 		//xx.ExecuteNowQuery("SELECT  * FROM tSoltc where rCli like  '%?%'  and cSgmto = ? ", parameters);
+		//Reminder ren = new Reminder(1);
+		
+		
 		ImageIcon imgicon = new ImageIcon("images/casasimbolo.fw.png");
 		JFrame form= new JFrame("Save Animal");
 		form.setIconImage(imgicon.getImage());
